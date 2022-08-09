@@ -34,7 +34,7 @@
             android:text="タップしてスタート"
             android:textsize="20sp"
             android:layout_gravity="center" />
-
+<!--        android:srcで画像を取得できる-->
         <ImageView
             android:id="@+id/box"
             android:layout_width="50dp"
