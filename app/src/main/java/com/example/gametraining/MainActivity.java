@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private float blackX;
     private float blackY;
 
+    // Score
+    private int score = 0;
+
     //Handler &  Timer
     private Handler handler = new Handler();
     private Timer timer = new Timer();
@@ -77,10 +80,13 @@ public class MainActivity extends AppCompatActivity {
         black.setX(-80.0f);
         black.setY(-80.0f);
 
-
+        scoreLabel.setText("Score : 0");
     }
 
     public void changePos() {
+
+        hitCheck();
+
         // Orangeの動き制御
         orangeX -= 12;
         if (orangeX < 0) {
@@ -120,6 +126,39 @@ public class MainActivity extends AppCompatActivity {
         if (boxY > frameHeight - boxSize) boxY = frameHeight - boxSize;
 
         box.setY(boxY);
+
+        scoreLabel.setText("Score : " + score);
+    }
+
+    public void hitCheck() {
+        //orangeの衝突判定
+        float orangeCenterX = orangeX + orange.getWidth() / 2;
+        float orangeCenterY = orangeY + orange.getHeight() / 2;
+
+        if (0 <= orangeCenterX && orangeCenterX <= boxSize && boxY <= orangeCenterY && orangeCenterY <= boxY + boxSize) {
+            orangeX = -10.0f;
+            score += 10;
+        }
+
+        //pinkの衝突判定
+        float pinkCenterX = pinkX + pink.getWidth() / 2;
+        float pinkCenterY = pinkY + pink.getHeight() / 2;
+
+        if (0 <= pinkCenterX && pinkCenterX <= boxSize && boxY <= pinkCenterY && pinkCenterY <= boxY + boxSize) {
+            pinkX = -10.0f;
+            score += 30;
+        }
+
+        //blackの衝突判定
+        float blackCenterX = blackX + black.getWidth() / 2;
+        float blackCenterY = blackY + black.getHeight() / 2;
+
+        if (0 <= blackCenterX && blackCenterX <= boxSize && boxY <= blackCenterY && blackCenterY <= boxY + boxSize) {
+            if (timer != null) {
+                timer.cancel();
+                timer = null;
+            }
+        }
     }
 
     @Override
