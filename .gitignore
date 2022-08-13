@@ -26,6 +26,7 @@
 /app/proguard-rules.pro
 /app/src/androidTest
 /app/src/test
-
+/app/src/main/res/raw
+/app/src/main/res/drawable
 
 

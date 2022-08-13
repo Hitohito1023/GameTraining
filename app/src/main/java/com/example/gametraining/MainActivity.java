@@ -52,10 +52,15 @@ public class MainActivity extends AppCompatActivity {
     private boolean action_flg = false;
     private boolean start_flg = false;
 
+    //sound
+    private SoundPlayer soundPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        soundPlayer = new SoundPlayer(this);
 
         scoreLabel = findViewById(R.id.scoreLabel);
         startLabel = findViewById(R.id.startLabel);
@@ -139,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         if (0 <= orangeCenterX && orangeCenterX <= boxSize && boxY <= orangeCenterY && orangeCenterY <= boxY + boxSize) {
             orangeX = -10.0f;
             score += 10;
+            soundPlayer.playHitSound();
         }
 
         //pinkの衝突判定
@@ -148,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         if (0 <= pinkCenterX && pinkCenterX <= boxSize && boxY <= pinkCenterY && pinkCenterY <= boxY + boxSize) {
             pinkX = -10.0f;
             score += 30;
+            soundPlayer.playHitSound();
         }
 
         //blackの衝突判定
@@ -158,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
             if (timer != null) {
                 timer.cancel();
                 timer = null;
+                soundPlayer.playOverSound();
             }
 
             //結果画面へ
