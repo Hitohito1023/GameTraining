@@ -40,4 +40,9 @@ public class ResultActivity extends AppCompatActivity {
     public void tryAgain(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
