@@ -16,7 +16,7 @@
         android:id="@+id/scoreLabel"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Score : 300"
+        android:text="@string/score"
         android:textSize="18sp"
         android:paddingLeft="10dp"
         android:gravity="center_vertical" />

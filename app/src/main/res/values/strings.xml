@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Game Training</string>
+    <string name="score">Score : %d</string>
 </resources>
